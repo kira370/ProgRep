@@ -1,0 +1,97 @@
+<web-app>
+	<servlet>
+		<servlet-name>LoginUser</servlet-name>
+		<servlet-class>services.Login</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>VerificationUser</servlet-name>
+		<servlet-class>services.Verification</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>loginadmin</servlet-name>
+		<servlet-class>services.LoginAdmin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>startadmin</servlet-name>
+		<servlet-class>services.startAdmin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Verificationadmin</servlet-name>
+		<servlet-class>services.VerificationAdmin</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>services.Home</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>services.Action</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ajouter</servlet-name>
+		<servlet-class>services.Ajouter</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>retour</servlet-name>
+		<servlet-class>services.Retour</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>emprunter</servlet-name>
+		<servlet-class>services.Emprunter</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>deconnexion</servlet-name>
+		<servlet-class>services.Deconnexion</servlet-class>
+	</servlet>
+
+
+
+
+	<servlet-mapping>
+		<servlet-name>LoginUser</servlet-name>
+		<url-pattern>/loginuser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>VerificationUser</servlet-name>
+		<url-pattern>/verification</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>loginadmin</servlet-name>
+		<url-pattern>/loginadmin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>startadmin</servlet-name>
+		<url-pattern>/startadmin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Verificationadmin</servlet-name>
+		<url-pattern>/verificationadmin</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>/action</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>retour</servlet-name>
+		<url-pattern>/retour</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>emprunter</servlet-name>
+		<url-pattern>/emprunter</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ajouter</servlet-name>
+		<url-pattern>/ajouter</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>deconnexion</servlet-name>
+		<url-pattern>/deconnexion</url-pattern>
+	</servlet-mapping>
+</web-app>
