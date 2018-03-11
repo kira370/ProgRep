@@ -10,5 +10,5 @@ public interface Document {
 	void emprunter(Utilisateur a) throws EmpruntException;
 	void retour();
 	Object[] affiche();
-	Utilisateur getUser();
+
 }

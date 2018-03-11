@@ -80,7 +80,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>retour</servlet-name>
-		<url-pattern>/retour</url-pattern>
+		<url-pattern>/retourner</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>emprunter</servlet-name>

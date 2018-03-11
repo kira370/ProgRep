@@ -28,5 +28,7 @@ public class startAdmin extends HttpServlet {
 		
 		response.sendRedirect("./loginuser");
 	}
+	
+
 
 }

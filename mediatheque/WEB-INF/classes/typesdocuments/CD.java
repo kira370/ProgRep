@@ -6,21 +6,33 @@ import utilisateur.Utilisateur;
 
 public class CD implements Document {
 	private int id;
-	private Object auteur;
-	private Object nom;
+	private String auteur;
+	private String nom;
+	private String compositeur;
+	private String annee;
 	private Utilisateur user;
 	
-	public CD(int index, String nom, String auteur) {
+	public CD(int index, String nom, String auteur,String comp, String annee, Utilisateur user) {
 		this.id = index;
 		this.auteur = auteur;
 		this.nom = nom;
-		this.user = null;
+		this.compositeur = comp;
+		this.annee = annee;
+		this.user = user;
 	}
-
+	
+	public CD(int index, String nom, String auteur,String comp, String annee) {
+		this(index, nom, auteur, comp, annee, null);
+	}
+	
 	@Override
 	public void emprunter(Utilisateur a) throws EmpruntException {
 		if(this.user != null) throw new EmpruntException();
 		this.user = a;
+		
+		
+		
+		
 	}
 
 	@Override
@@ -30,13 +42,8 @@ public class CD implements Document {
 
 	@Override
 	public Object[] affiche() {
-		Object[] ret = {id , nom, auteur};
+		Object[] ret = {id , nom, auteur, compositeur, annee};
 		return ret;
-	}
-
-	@Override
-	public Utilisateur getUser() {
-		return this.user;
 	}
 
 }

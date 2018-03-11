@@ -2,6 +2,7 @@ package services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ResourceBundle;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,10 +21,11 @@ public class VerificationAdmin extends HttpServlet {
 		}
 		boolean admin = false;
 		try {
+			ResourceBundle bundle = ResourceBundle.getBundle("config.config");
 			String username = request.getParameter("username");
 			String pass = request.getParameter("password");
 			//si la mediatheque renvoi null, alors redirection vers la page login
-			if(!(username.equals("admin") && pass.equals("123"))) 
+			if(username.equals(bundle.getString("admin.login")) && pass.equals(bundle.getString("admin.password")))
 			{
 				admin = true;
 			}

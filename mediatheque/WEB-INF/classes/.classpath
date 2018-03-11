@@ -2,8 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
-	<classpathentry kind="lib" path="G:/tomcatWeb/webapps/mediatheque/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="G:/tomcatWeb/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="G:/tomcatWeb/lib/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="lib" path="G:/tomcatWeb/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

@@ -1,14 +1,16 @@
 package utilisateur;
 
 public class Utilisateur {
+	private int id;
 	private String user;
 	private String password;
-	private String nom;
+	private String nomPrenom;
 	private TypeUtilisateur type;
 	
-	public Utilisateur(String user, String password,String nom, TypeUtilisateur type) {
+	public Utilisateur(int index, String user, String password,String nom, TypeUtilisateur type) {
+		this.id = index;
 		this.user = user;
-		this.nom = nom;
+		this.nomPrenom = nom;
 		this.password = password;
 		this.type = type;
 	}
@@ -17,13 +19,17 @@ public class Utilisateur {
 	public String getUser() {
 		return user;
 	}
-
+	
+	public int getId() {
+		return id;
+	}
+	
 	public String getPassword() {
 		return password;
 	}
 
 	public String getNom() {
-		return nom;
+		return nomPrenom;
 	}
 
 	public TypeUtilisateur getType() {

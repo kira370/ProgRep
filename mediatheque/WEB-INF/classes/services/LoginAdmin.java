@@ -1,7 +1,6 @@
 package services;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.http.*;
 
 public class LoginAdmin extends HttpServlet{
@@ -37,10 +36,10 @@ public class LoginAdmin extends HttpServlet{
 		out.println("<div>");
 		out.println("<form action='verificationadmin' method='POST'>");
 		out.println("Nom d'utilisateur:<br>");
-		out.println("<input type='text' name='username' value='delannoy'>");
+		out.println("<input type='text' name='username' value='admin'>");
 		out.println("<br>");
 		out.println("Mot de passe:<br>");
-		out.println("<input type='password' name='password' value='delannoy'>");
+		out.println("<input type='password' name='password' value='123'>");
 		out.println("<br>");
 		out.println("<input type='submit' value='Submit'>");
 		out.println("</form>"); 

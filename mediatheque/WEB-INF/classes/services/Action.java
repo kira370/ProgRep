@@ -12,6 +12,7 @@ import utilisateur.Utilisateur;
 public class Action extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession(true);
@@ -46,15 +47,20 @@ public class Action extends HttpServlet{
 			htmlStr += "</select>";
 			break;
 		case "retourner":
+			
+			
 			htmlStr += "<select name='idDoc'>";
-			for(Document doc : Mediatheque.getInstance().tousLesDocuments()) {
-				if(doc.getUser().equals(user)) {
-					Object[] afficheDoc = doc.affiche();
-					htmlStr += "<option value='" + afficheDoc[0] + "'>"+ afficheDoc[1] +" par " + afficheDoc[2] + "</option>";
-				}
+			for(Document doc : Mediatheque.getInstance().tousLesDocuments(user.getId())) {
+				Object[] afficheDoc = doc.affiche();
+				htmlStr += "<option value='" + afficheDoc[0] + "'>"+ afficheDoc[1] +" par " + afficheDoc[2] + "</option>";
 			}
 			htmlStr += "</select>";
 			break;
+			
+			
+			
+			
+			
 		case "ajouter":
 			if(user.getType().equals(TypeUtilisateur.ABONNE)){
 				response.sendRedirect("./home?error=1");
