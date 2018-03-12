@@ -15,5 +15,9 @@ public interface PersistentMediatheque {
 	Utilisateur getUser(String login, String password);
 	
 	void nouveauDocument(int type, Object... args );
+	
+	void emprunterDoc(int idDoc, int idUser);
+	
+	void retourDoc(int idDoc);
 
 }

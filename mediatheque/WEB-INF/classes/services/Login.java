@@ -10,6 +10,10 @@ public class Login extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession(true);
+		if(!connexionBDD.connexionBDD.isConnexion()){
+			response.sendRedirect("./loginadmin");
+			return;
+		}
 		if(session.getAttribute("utilisateur") != null) {
 			response.sendRedirect("./home");
 			return;

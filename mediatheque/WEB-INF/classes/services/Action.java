@@ -69,26 +69,54 @@ public class Action extends HttpServlet{
 			if(request.getParameter("error") != null) {
 				switch(request.getParameter("error")) {
 				case "1":
-					out.println("<h4>Vous devez remplir des deux champs.</h4></br>");
+					out.println("<h4>Vous devez remplir les deux champs.</h4></br>");
 					break;
 				case "0":
 					out.println("<h4>un problème est survenue, veuillez reessayer.</h4></br>");
 					break;
 				}
 			}
-			htmlStr += "Nom du document:<br>";
-			htmlStr += "<input type='text' name='nom'>";
-			htmlStr += "<br>";
-			htmlStr += "Nom de l'auteur:<br>";
-			htmlStr += "<input type='text' name='auteur'>";
-			htmlStr += "<br>";
-			htmlStr += "Type du document:<br>";
-			htmlStr +=  "<select name='type'>";
-			htmlStr += "<option value='1'>Livre</option>";
-			htmlStr += "<option value='2'>CD</option>";
-			htmlStr += "<option value='3'>DVD</option>";
+			String typeDoc = request.getParameter("doc");
+			htmlStr +=  "<select name='type' onChange='window.location.href = \"/mediatheque/action?action=ajouter&doc=\" + this.value'>";
+			htmlStr += "<option value='0'>Type</option>";
+			htmlStr += "<option value='1'" + ((typeDoc != null && typeDoc.equals("1"))?"selected":"") +">Livre</option>";
+			htmlStr += "<option value='2'" + ((typeDoc != null && typeDoc.equals("2"))?"selected":"") +">CD</option>";
+			htmlStr += "<option value='3'" + ((typeDoc != null && typeDoc.equals("3"))?"selected":"") +">DVD</option>";
 			htmlStr += "</select>";
 			htmlStr += "<br>";
+
+			if(typeDoc != null){
+				switch(typeDoc){
+				case "1" :
+					htmlStr += "Nom du document:<br>";
+					htmlStr += "<input type='text' name='nom'><br>";
+					htmlStr += "Nom de l'auteur:<br>";
+					htmlStr += "<input type='text' name='auteur'><br>";
+					htmlStr += "Année (XXXX):<br>";
+					htmlStr += "<input type='number' name='annee'><br>";
+					break;
+				case "2" :
+					htmlStr += "Nom du document:<br>";
+					htmlStr += "<input type='text' name='nom'><br>";
+					htmlStr += "Nom de l'auteur:<br>";
+					htmlStr += "<input type='text' name='auteur'><br>";
+					htmlStr += "Nom du compositeur:<br>";
+					htmlStr += "<input type='text' name='compositeur'><br>";
+					htmlStr += "Année (XXXX):<br>";
+					htmlStr += "<input type='number' name='annee'><br>";
+					break;
+				case "3" :
+					htmlStr += "Nom du document:<br>";
+					htmlStr += "<input type='text' name='nom'><br>";
+					htmlStr += "Nom du realisateur:<br>";
+					htmlStr += "<input type='text' name='realisateur'><br>";
+					htmlStr += "Nom du producteur:<br>";
+					htmlStr += "<input type='text' name='producteur'><br>";
+					htmlStr += "Année de sortie (XXXX):<br>";
+					htmlStr += "<input type='number' name='sortie'><br>";
+				}
+			}
+			
 			break;
 		}
 		

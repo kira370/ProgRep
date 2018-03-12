@@ -86,19 +86,14 @@ public class Mediatheque {
 
 	public void nouveauDocument(int type, Object... args ) {
 		data.nouveauDocument(type, args);
-	};
-
+	}
 	
+	public void emprunterDoc(int idDoc, int idUser){
+		data.emprunterDoc(idDoc, idUser);
+	}
 	
-	/*
-	 * 
-	 * a faire
-	 * methode 
-	 * public void emprunterDoc(int idDoc, int idUser)
-	 * public void retourDoc(int idDoc)
-	 * 
-	 */
-	
-	
+	public void retourDoc(int idDoc){
+		data.retourDoc(idDoc);
+	}
 	
 }

@@ -27,6 +27,7 @@ public class Emprunter extends HttpServlet{
 			Mediatheque media = Mediatheque.getInstance();
 			doc = media.getDocument(numeroDoc);
 			media.emprunt(doc, user);
+			media.emprunterDoc(numeroDoc, user.getId());
 		}catch(NumberFormatException | NullPointerException e) {
 			e.printStackTrace();
 			response.sendRedirect("./home?error=1");

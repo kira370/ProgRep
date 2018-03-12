@@ -22,6 +22,7 @@ public class startAdmin extends HttpServlet {
 		try {
 			Class.forName("mediatheque.Mediatheque");
 			Class.forName("persistantdata.MediathequeData");
+			connexionBDD.connexionBDD.setConnexion(true);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -26,6 +26,7 @@ public class Retour extends HttpServlet{
 			Mediatheque media = Mediatheque.getInstance();
 			doc = media.getDocument(numeroDoc);
 			media.retour(doc);
+			media.retourDoc(numeroDoc);
 		}catch(NumberFormatException | NullPointerException e) {
 			response.sendRedirect("./home?error=1");
 			return;

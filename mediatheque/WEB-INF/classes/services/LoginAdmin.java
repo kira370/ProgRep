@@ -9,10 +9,12 @@ public class LoginAdmin extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession(true);
+				
 		if(session.getAttribute("utilisateur") != null) {
 			response.sendRedirect("./home");
 			return;
 		}
+		
 		
 		
 		out.println("<html>");

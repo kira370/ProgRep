@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import mediatheque.Document;
-import mediatheque.EmpruntException;
 import utilisateur.Utilisateur;
 
 public class DocumentFactory {

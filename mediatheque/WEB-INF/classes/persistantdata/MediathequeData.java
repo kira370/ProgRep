@@ -6,12 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import mediatheque.Document;
-import mediatheque.EmpruntException;
 import mediatheque.Mediatheque;
 import mediatheque.PersistentMediatheque;
 import typesdocuments.DocumentFactory;
@@ -201,9 +201,10 @@ public class MediathequeData implements PersistentMediatheque {
 			switch(type) {
 			case 1 : 
 				requete = co.prepareStatement("INSERT INTO livre(nom,auteur,annee) VALUES (?,?,?);", Statement.RETURN_GENERATED_KEYS);
-				requete.setObject(1,type);
-				requete.setObject(2,(String) args[0]);
-				requete.setObject(3,(String) args[1]);
+				requete.setObject(1,(String) args[0]);
+				requete.setObject(2,(String) args[1]);
+				requete.setObject(3,(Integer) args[2]);
+				requete.executeUpdate();
 				rs = requete.getGeneratedKeys();
 				if(rs.next()) {
 					idDoc = rs.getInt(1);
@@ -215,7 +216,8 @@ public class MediathequeData implements PersistentMediatheque {
 				requete.setObject(1,(String) args[0]);
 				requete.setObject(2,(String) args[1]);
 				requete.setObject(3,(String) args[2]);
-				requete.setObject(4,(String) args[3]);
+				requete.setObject(4,(Integer) args[3]);
+				requete.executeUpdate();
 				rs = requete.getGeneratedKeys();
 				if(rs.next()) {
 					idDoc = rs.getInt(1);
@@ -227,20 +229,19 @@ public class MediathequeData implements PersistentMediatheque {
 				requete.setObject(1,(String) args[0]);
 				requete.setObject(2,(String) args[1]);
 				requete.setObject(3,(String) args[2]);
-				requete.setObject(4,(String) args[3]);
+				requete.setObject(4,(Integer) args[3]);
+				requete.executeUpdate();
 				rs = requete.getGeneratedKeys();
 				if(rs.next()) {
 					idDoc = rs.getInt(1);
 					typeDoc = "dvd";
 				}
-				break;
 			}
 			
 			
-			requete = co.prepareStatement("INSERT INTO document(idDoc,idUser,typeDoc) VALUES (?,?,?);");
+			requete = co.prepareStatement("INSERT INTO document(idDoc,idUser,typeDoc) VALUES (?,NULL,?);");
 			requete.setObject(1,idDoc);
-			requete.setObject(2,null);
-			requete.setObject(3,typeDoc);
+			requete.setObject(2,typeDoc);
 			requete.executeUpdate();
 		} catch (SQLException | NullPointerException e) {
 			e.printStackTrace();
@@ -272,6 +273,33 @@ public class MediathequeData implements PersistentMediatheque {
 		return documents;
 		
 		
+	}
+
+	@Override
+	public void emprunterDoc(int idDoc, int idUser) {
+		String req = "UPDATE document SET idUser = ? WHERE id = ?";
+		try {
+			PreparedStatement st = co.prepareStatement(req);
+			st.setObject(1,(Integer) idUser);
+			st.setObject(2,(Integer) idDoc);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void retourDoc(int idDoc) {
+		String req = "UPDATE document SET idUser = NULL WHERE id = ?";
+		try {
+			PreparedStatement st = co.prepareStatement(req);
+			st.setObject(1,(Integer) idDoc);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

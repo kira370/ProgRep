@@ -23,6 +23,23 @@ public class Ajouter extends HttpServlet{
 		String nom = request.getParameter("nom");
 		String auteur = request.getParameter("auteur");
 		String type = request.getParameter("type");
+		if(type.equals("0")){
+			response.sendRedirect("./action?action=ajouter&error=0");
+			return;
+		}
+		Object[] args = null;
+		
+		switch(type){
+		case "1":
+			args = new Object[] { request.getParameter("nom") , request.getParameter("auteur") , Integer.parseInt(request.getParameter("annee"))};
+			break;
+		case "2":
+			args = new Object[] { request.getParameter("nom") , request.getParameter("auteur") , request.getParameter("compositeur"), Integer.parseInt(request.getParameter("annee"))};
+			break;
+		case "3":
+			args = new Object[] { request.getParameter("nom") , request.getParameter("realisateur") , request.getParameter("producteur"), Integer.parseInt(request.getParameter("sortie"))};
+		}
+		
 		if(nom.equals("") || auteur.equals("")) {
 			response.sendRedirect("./action?action=ajouter&error=1");
 			return;
@@ -30,8 +47,9 @@ public class Ajouter extends HttpServlet{
 		
 		try {
 			Mediatheque media = Mediatheque.getInstance();
-			media.nouveauDocument(Integer.parseInt(type), nom, auteur);
+			media.nouveauDocument(Integer.parseInt(type),args);
 		}catch(NumberFormatException e) {
+			e.printStackTrace();
 			response.sendRedirect("./action?action=ajouter&error=0");
 			return;
 		}
