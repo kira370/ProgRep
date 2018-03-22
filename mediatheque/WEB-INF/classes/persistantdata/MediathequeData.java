@@ -142,6 +142,17 @@ public class MediathequeData implements PersistentMediatheque {
 			requete.setObject(1,numDocument);
 			rs = requete.executeQuery();
 			while(rs.next()) {
+				
+				
+				/*
+				 * La colonne "typeDoc" est un type enum dans la base de donnée
+				 * et a comme valeur les noms de table des documents (dvd, cd, livre)
+				 * 
+				 * Pourquoi avoir fait cela?
+				 * Cela me permet de ne pas toucher à cette Classe,
+				 * mais plutôt toucher à la base de donnée et à la Factory.
+				 * 
+				 */
 				String type = rs.getString("typeDoc");
 				int idDoc = rs.getInt("id");
 				int idUser = rs.getInt("idUser");
@@ -205,6 +216,9 @@ public class MediathequeData implements PersistentMediatheque {
 				requete.setObject(2,(String) args[1]);
 				requete.setObject(3,(Integer) args[2]);
 				requete.executeUpdate();
+				
+				
+				//getGeneratedKeys me permet de recuperer les valeurs précédemment ajoutées pour en tirer l'id du document.
 				rs = requete.getGeneratedKeys();
 				if(rs.next()) {
 					idDoc = rs.getInt(1);
@@ -231,6 +245,8 @@ public class MediathequeData implements PersistentMediatheque {
 				requete.setObject(3,(String) args[2]);
 				requete.setObject(4,(Integer) args[3]);
 				requete.executeUpdate();
+				
+				
 				rs = requete.getGeneratedKeys();
 				if(rs.next()) {
 					idDoc = rs.getInt(1);
@@ -284,7 +300,6 @@ public class MediathequeData implements PersistentMediatheque {
 			st.setObject(2,(Integer) idDoc);
 			st.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -297,7 +312,6 @@ public class MediathequeData implements PersistentMediatheque {
 			st.setObject(1,(Integer) idDoc);
 			st.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
